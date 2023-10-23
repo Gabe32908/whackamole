@@ -1,43 +1,50 @@
 <html>
-    <script>
+  <script>
+    // initialize the ide variable inside the moley function
+    let ide = "0";
 
-        let ide='0'
+    function holey() {
+      element = document.getElementById(ide);
+      element.src = "whackit/holey.jpg";
+    }
 
+    function moley() {
+      // get random interval between 1500 and 3000 and pass it to the setInterval function at the end
+      random_interval = Math.floor(Math.random() * (3000 - 1500) + 1500);
+      // use setInterval inside the moley function to run when the start button is pressed
+      setInterval(() => {
+        // clear any moles on the screen
+        images = document.getElementsByTagName("img");
+        for (let i = 0; i < images.length; i++) {
+          images[i].src = "whackit/holey.jpg";
+        }
 
-setInterval(() => {
-    ide=Math.floor(Math.random() * 5);
-}, '1000');
+        // reassign the ide variable a random integer in each iteration between 1 and 5
+        ide = Math.floor(Math.random() * (5 - 1) + 1);
+        console.log(ide);
 
+        // add an event listener to the element to detect clicks
+        // when a click event is triggered , the holey function will make the mole disappear
+        element = document.getElementById(ide); //get the current element with a mole
 
-function moley()
-{
-    document.getElementById(ide).src="whackit/moley.jpg";
-    setTimeout(moley,500)
-}        
-function holey()
-{
+        element.addEventListener("click", holey); //add the click evenet listener
 
-   document.getElementById(ide).src="whackit/holey.jpg";
-    setTimeout(moley,1000)
-    
-}
-    </script>
-    <body>
-    
-            <img id='1'src="whackit/holey.jpg">
-    
-    
-            <img id='2'src="whackit/holey.jpg">
-    
-    
-            <img id='3'src="whackit/holey.jpg">
-    
-    
-            <img id='4'src="whackit/holey.jpg">
-    
-    
-            <img id='5'src="whackit/holey.jpg">
-        
-        <button onclick="moley()">start</button>
-    </body>
+        // each interval/iteration with a valid number will set the elements source to the mole image
+        element.src = "whackit/moley.jpg";
+      }, random_interval);
+    }
+  </script>
+  <body>
+    <img id="1" src="whackit/holey.jpg" />
+
+    <img id="2" src="whackit/holey.jpg" />
+
+    <img id="3" src="whackit/holey.jpg" />
+
+    <img id="4" src="whackit/holey.jpg" />
+
+    <img id="5" src="whackit/holey.jpg" />
+
+    <button onclick="moley()">start</button>
+  </body>
 </html>
