@@ -1,0 +1,43 @@
+<html>
+    <script>
+
+        let ide='0'
+
+
+setInterval(() => {
+    ide=Math.floor(Math.random() * 5);
+}, '1000');
+
+
+function moley()
+{
+    document.getElementById(ide).src="whackit/moley.jpg";
+    setTimeout(moley,500)
+}        
+function holey()
+{
+
+   document.getElementById(ide).src="whackit/holey.jpg";
+    setTimeout(moley,1000)
+    
+}
+    </script>
+    <body>
+    
+            <img id='1'src="whackit/holey.jpg">
+    
+    
+            <img id='2'src="whackit/holey.jpg">
+    
+    
+            <img id='3'src="whackit/holey.jpg">
+    
+    
+            <img id='4'src="whackit/holey.jpg">
+    
+    
+            <img id='5'src="whackit/holey.jpg">
+        
+        <button onclick="moley()">start</button>
+    </body>
+</html>
