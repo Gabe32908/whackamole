@@ -1,7 +1,8 @@
 <html>
   <script>
     // initialize the ide variable inside the moley function
-    let ide = "0";
+    let ide = 0;
+    let lastNum = 0;
 
     function holey() {
       element = document.getElementById(ide);
@@ -17,11 +18,17 @@
         images = document.getElementsByTagName("img");
         for (let i = 0; i < images.length; i++) {
           images[i].src = "whackit/holey.jpg";
+          images[i].removeEventListener("click", holey);
         }
 
         // reassign the ide variable a random integer in each iteration between 1 and 5
-        ide = Math.floor(Math.random() * (5 - 1) + 1);
-        console.log(ide);
+        while (ide == lastNum) {
+          ide = Math.floor(Math.random() * (5 - 1) + 1);
+          console.log("new ide num: ", ide);
+        }
+
+        lastNum = ide;
+        console.log("last num: ", lastNum);
 
         // add an event listener to the element to detect clicks
         // when a click event is triggered , the holey function will make the mole disappear
